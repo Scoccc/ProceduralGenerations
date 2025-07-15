@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgm5rw4u5cdqb"]
+
+[ext_resource type="Script" path="res://MazeTimeTesting.cs" id="1_cyv17"]
+[ext_resource type="PackedScene" uid="uid://bodcxd4gwexlc" path="res://Generators/MazeGenerator/maze_generator.tscn" id="2_t043k"]
+
+[node name="MazeTimeTesting" type="Node2D" node_paths=PackedStringArray("generator")]
+script = ExtResource("1_cyv17")
+firstSize = 10
+numberOfSizes = 100
+sizesStep = 20
+generations = 20
+generator = NodePath("MazeGenerator")
+
+[node name="MazeGenerator" parent="." instance=ExtResource("2_t043k")]
+MazeSize = Vector2i(10, 10)
+StartChoosingMethod = 1

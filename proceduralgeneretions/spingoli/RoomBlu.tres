@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RoomType" load_steps=2 format=3 uid="uid://dalmx0ufkefto"]
+
+[ext_resource type="Script" path="res://Generators/RoomGenerator/RoomType.cs" id="1_etw8d"]
+
+[resource]
+script = ExtResource("1_etw8d")
+Name = "blu"
+Color = Color(0, 0.463661, 0.841339, 1)
+ignoreMaxNumber = true
+MaxNumber = 1
+SpawnProbability = 1.0
+MinSizeCell = Vector2i(1, 2)
+MaxSizeCell = Vector2i(1, 2)

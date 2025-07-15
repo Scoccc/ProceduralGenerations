@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwqey8o8fyoev"]
+
+[ext_resource type="Script" path="res://Generators/GroupGenerator/GroupGenerator.cs" id="1_e5s5l"]
+
+[node name="GroupGenerator" type="Node"]
+script = ExtResource("1_e5s5l")

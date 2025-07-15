@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bodcxd4gwexlc"]
+
+[ext_resource type="Script" path="res://Generators/MazeGenerator/MazeGenerator.cs" id="1_3lqef"]
+
+[node name="MazeGenerator" type="Node"]
+script = ExtResource("1_3lqef")

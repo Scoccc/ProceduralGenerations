@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://rdrxcefx0my"]
+
+[ext_resource type="Script" path="res://Renderers/PrisonRenderer/PrisonRenderer.cs" id="1_akitf"]
+[ext_resource type="PackedScene" uid="uid://q32tmxqogxw3" path="res://Generators/PrisonsGenerator/prison_generator.tscn" id="2_q5vvg"]
+[ext_resource type="PackedScene" uid="uid://cwqey8o8fyoev" path="res://Generators/GroupGenerator/group_generator.tscn" id="3_437ps"]
+[ext_resource type="PackedScene" uid="uid://7xd2lhxr8o7e" path="res://Generators/RoomGenerator/RoomGenerator.tscn" id="4_rq8ci"]
+
+[node name="PrisonRenderer" type="Node2D" node_paths=PackedStringArray("Generator")]
+script = ExtResource("1_akitf")
+Generator = NodePath("PrisonGenerator")
+WallWidth = 1.0
+DrawScale = 8.1
+
+[node name="PrisonGenerator" parent="." node_paths=PackedStringArray("groupGenerator") instance=ExtResource("2_q5vvg")]
+RecursionSteps = 10
+groupGenerator = NodePath("../GroupGenerator")
+
+[node name="GroupGenerator" parent="." node_paths=PackedStringArray("RoomGenerator") instance=ExtResource("3_437ps")]
+Size = Vector2i(5, 5)
+MinSubdivionSize = Vector2i(1, 1)
+RoomGenerator = NodePath("../RoomGenerator")
+SplitChance = 0.5
+MaxOffsetFromCenterPercentage = 1.0
+
+[node name="RoomGenerator" parent="." instance=ExtResource("4_rq8ci")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

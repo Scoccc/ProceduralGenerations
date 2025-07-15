@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://3nwjsmfugpwj"]
+
+[ext_resource type="Script" path="res://Renderers/PopulatedCaveRenderer/PopulatedCaveRenderer.cs" id="1_qyc4f"]
+[ext_resource type="PackedScene" uid="uid://6xpe5nwng8nx" path="res://Generators/PopulatedCavesGenerator/PopulatedCaveGenerator.tscn" id="2_lkk2l"]
+[ext_resource type="PackedScene" uid="uid://g7t266jyfevx" path="res://Generators/CaveGenerator/CaveGenerator.tscn" id="3_hmn8s"]
+[ext_resource type="PackedScene" uid="uid://7xd2lhxr8o7e" path="res://Generators/RoomGenerator/RoomGenerator.tscn" id="4_iupq3"]
+[ext_resource type="Script" path="res://Generators/RoomGenerator/RoomType.cs" id="4_p81oi"]
+
+[sub_resource type="Resource" id="Resource_p5qkm"]
+script = ExtResource("4_p81oi")
+Name = ""
+Color = Color(0, 1, 0, 1)
+ignoreMaxNumber = true
+MaxNumber = 999
+SpawnProbability = 1.0
+MinSizeCell = Vector2i(1, 1)
+MaxSizeCell = Vector2i(1, 1)
+
+[sub_resource type="Resource" id="Resource_4jh88"]
+script = ExtResource("4_p81oi")
+Name = ""
+Color = Color(0, 0, 0, 1)
+ignoreMaxNumber = true
+MaxNumber = 999
+SpawnProbability = 1.0
+MinSizeCell = Vector2i(2, 2)
+MaxSizeCell = Vector2i(2, 2)
+
+[node name="PopulatedCaveRenderer" type="Node2D" node_paths=PackedStringArray("Generator")]
+script = ExtResource("1_qyc4f")
+Generator = NodePath("PopulatedCaveGenerator")
+CaveColor = Color(0.47788, 0.47788, 0.47788, 1)
+DrawScale = 4.0
+
+[node name="PopulatedCaveGenerator" parent="." node_paths=PackedStringArray("caveGenerator", "roomGenerator") instance=ExtResource("2_lkk2l")]
+caveGenerator = NodePath("../CaveGenerator")
+roomGenerator = NodePath("../RoomGenerator")
+minSize = Vector2i(9, 9)
+maxGroupSpread = 99999
+
+[node name="RoomGenerator" parent="." instance=ExtResource("4_iupq3")]
+roomTypes = Array[Object]([SubResource("Resource_p5qkm"), SubResource("Resource_4jh88")])
+
+[node name="CaveGenerator" parent="." instance=ExtResource("3_hmn8s")]
+gridSize = Vector2i(150, 150)
+noiseDensity = 0.622

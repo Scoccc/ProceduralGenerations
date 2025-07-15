@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5shfbvvo45cn"]
+
+[ext_resource type="Script" path="res://Renderers/CaveRenderer/CaveRenderer.cs" id="1_xx4yo"]
+
+[node name="CaveRenderer" type="Node2D"]
+script = ExtResource("1_xx4yo")
+biggestCaveColor = Color(0.632228, 0.623024, 0.625322, 1)
+smallestCaveColor = Color(0.347651, 0.440706, 0.605493, 1)
+wallsColor = Color(0.169245, 0.169245, 0.169245, 1)

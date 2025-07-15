@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://vjtt62jpx4tu"]
+
+[ext_resource type="Script" path="res://CavernTimeTesting.cs" id="1_qbx2p"]
+[ext_resource type="Script" path="res://Generators/CaveGenerator/CaveGenerator.cs" id="2_yytat"]
+
+[node name="CaveTimeTesting" type="Node2D" node_paths=PackedStringArray("generator")]
+script = ExtResource("1_qbx2p")
+recursionSteps = Array[int]([2, 4, 6, 8, 10])
+CaveSizes = Array[Vector2i]([Vector2i(50, 50), Vector2i(75, 75), Vector2i(100, 100), Vector2i(125, 125), Vector2i(150, 150), Vector2i(175, 175), Vector2i(200, 200)])
+density = Array[float]([0.25, 0.5, 0.75])
+max = Array[int]([1, 2, 3, 4, 5, 6, 7, 8])
+min = Array[int]([1, 2, 3, 4, 5, 6, 7, 8])
+generator = NodePath("CaveGenerator")
+generations = 10
+
+[node name="CaveGenerator" type="Node" parent="."]
+script = ExtResource("2_yytat")
+iterations = 2
+noiseDensity = 0.587
+minThreshold = 0.005

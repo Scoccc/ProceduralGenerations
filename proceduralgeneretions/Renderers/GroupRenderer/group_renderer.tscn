@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://br0s30mff2k3b"]
+
+[ext_resource type="Script" path="res://Renderers/GroupRenderer/GroupRenderer.cs" id="1_hqhbk"]
+[ext_resource type="PackedScene" uid="uid://cwqey8o8fyoev" path="res://Generators/GroupGenerator/group_generator.tscn" id="2_6devj"]
+[ext_resource type="PackedScene" uid="uid://7xd2lhxr8o7e" path="res://Generators/RoomGenerator/RoomGenerator.tscn" id="3_1loe6"]
+
+[node name="GroupRenderer" type="Node2D" node_paths=PackedStringArray("Generator")]
+script = ExtResource("1_hqhbk")
+Generator = NodePath("GroupGenerator")
+WallWidth = 1.869
+DrawScale = 13.7
+
+[node name="GroupGenerator" parent="." node_paths=PackedStringArray("RoomGenerator") instance=ExtResource("2_6devj")]
+Size = Vector2i(10, 10)
+RoomGenerator = NodePath("../RoomGenerator")
+SplitChance = 1.0
+MaxOffsetFromCenterPercentage = 1.0
+
+[node name="RoomGenerator" parent="." instance=ExtResource("3_1loe6")]

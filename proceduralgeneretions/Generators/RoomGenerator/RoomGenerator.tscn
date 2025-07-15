@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7xd2lhxr8o7e"]
+
+[ext_resource type="Script" path="res://Generators/RoomGenerator/RoomGenerator.cs" id="1_bhrkn"]
+
+[node name="RoomGenerator" type="Node"]
+script = ExtResource("1_bhrkn")

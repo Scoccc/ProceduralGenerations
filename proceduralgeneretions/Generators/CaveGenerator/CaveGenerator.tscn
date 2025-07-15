@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://g7t266jyfevx"]
+
+[ext_resource type="Script" path="res://Generators/CaveGenerator/CaveGenerator.cs" id="1_nlsay"]
+
+[node name="CaveGenerator" type="Node"]
+script = ExtResource("1_nlsay")

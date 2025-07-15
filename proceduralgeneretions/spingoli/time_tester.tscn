@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bknns0jy68ns4"]
+
+[ext_resource type="Script" path="res://TimeTester.cs" id="1_hoaur"]
+[ext_resource type="Script" path="res://Generators/PrisonsGenerator/PrisonGenerator.cs" id="2_7w558"]
+[ext_resource type="Script" path="res://Generators/GroupGenerator/GroupGenerator.cs" id="3_cuvls"]
+[ext_resource type="Script" path="res://Generators/RoomGenerator/RoomGenerator.cs" id="4_xxark"]
+[ext_resource type="Resource" uid="uid://dalmx0ufkefto" path="res://spingoli/RoomBlu.tres" id="5_ckuj6"]
+[ext_resource type="Resource" uid="uid://63eamskqb3ig" path="res://spingoli/RoomRed.tres" id="6_6cfwk"]
+
+[node name="DungeonTimeTester" type="Node2D" node_paths=PackedStringArray("generator")]
+script = ExtResource("1_hoaur")
+recursionSteps = Array[int]([1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+groupSizes = Array[Vector2i]([Vector2i(1, 1), Vector2i(5, 5), Vector2i(10, 10), Vector2i(15, 15), Vector2i(20, 20), Vector2i(25, 25), Vector2i(30, 30), Vector2i(35, 35), Vector2i(40, 40), Vector2i(45, 45), Vector2i(50, 50)])
+generator = NodePath("PrisonGenerator")
+generations = 10
+
+[node name="PrisonGenerator" type="Node" parent="." node_paths=PackedStringArray("groupGenerator", "ExternalRoomGenerator")]
+script = ExtResource("2_7w558")
+RecursionSteps = 1
+groupGenerator = NodePath("GroupGenerator")
+ExternalRoomGenerator = NodePath("RoomGenerator")
+
+[node name="GroupGenerator" type="Node" parent="PrisonGenerator" node_paths=PackedStringArray("RoomGenerator")]
+script = ExtResource("3_cuvls")
+Size = Vector2i(1, 1)
+RoomGenerator = NodePath("RoomGenerator(10)")
+SplitChance = 0.5
+MaxOffsetFromCenterPercentage = 1.0
+
+[node name="RoomGenerator(10)" type="Node" parent="PrisonGenerator/GroupGenerator"]
+script = ExtResource("4_xxark")
+rotate = true
+roomTypes = Array[Object]([ExtResource("5_ckuj6"), ExtResource("6_6cfwk"), ExtResource("5_ckuj6"), ExtResource("5_ckuj6"), ExtResource("6_6cfwk"), ExtResource("6_6cfwk"), ExtResource("5_ckuj6"), ExtResource("6_6cfwk"), ExtResource("5_ckuj6"), ExtResource("6_6cfwk")])
+
+[node name="RoomGenerator" type="Node" parent="PrisonGenerator"]
+script = ExtResource("4_xxark")
+roomTypes = Array[Object]([])

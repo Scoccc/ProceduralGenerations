@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx2pjmhlu4ylr"]
+
+[ext_resource type="Script" path="res://Renderers/MazeRenderer/MazeRenderer.cs" id="1_5rd1j"]
+[ext_resource type="PackedScene" uid="uid://bodcxd4gwexlc" path="res://Generators/MazeGenerator/maze_generator.tscn" id="2_jo0pq"]
+
+[node name="MazeRenderer" type="Node2D" node_paths=PackedStringArray("Generator")]
+script = ExtResource("1_5rd1j")
+Generator = NodePath("MazeGenerator")
+ShowDijkstraMap = true
+ShowDeadEnds = false
+DrawScale = 25.0
+GridWidth = 3.0
+
+[node name="MazeGenerator" parent="." instance=ExtResource("2_jo0pq")]
+MazeSize = Vector2i(30, 30)
+StartChoosingMethod = 1

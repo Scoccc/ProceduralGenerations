@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://q32tmxqogxw3"]
+
+[ext_resource type="Script" path="res://Generators/PrisonsGenerator/PrisonGenerator.cs" id="1_xs7n7"]
+
+[node name="PrisonGenerator" type="Node"]
+script = ExtResource("1_xs7n7")
